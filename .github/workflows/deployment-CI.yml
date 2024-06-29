@@ -10,6 +10,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+          node-version: '19'
+
+    - name: install npm
+      run: npm install -g @angular/cli  --force
+      
     - name: Build the Docker image
       run: |
         docker build -t  angular-app:v1 .
