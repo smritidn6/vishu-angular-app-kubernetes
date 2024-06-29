@@ -1,0 +1,20 @@
+name: Jekyll site CI
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build the Docker image
+      run: |
+        cd gittalent-frontend
+        npm install
+        ng build 
+        docker build -t  angular-app:v1 .
+        docker tag angular-app:v1 smritidn6docker/angular-app:v1
+       
