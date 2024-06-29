@@ -1,4 +1,4 @@
-name: Jekyll site CI
+name: Deployment-CI
 
 on:
   workflow_dispatch:
@@ -12,9 +12,6 @@ jobs:
     - uses: actions/checkout@v4
     - name: Build the Docker image
       run: |
-        cd gittalent-frontend
-        npm install
-        ng build 
         docker build -t  angular-app:v1 .
         docker tag angular-app:v1 smritidn6docker/angular-app:v1
        
